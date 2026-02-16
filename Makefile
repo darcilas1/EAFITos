@@ -13,7 +13,7 @@
 # ==============================================================================
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Iinclude
+CFLAGS = -Wall -Wextra -Iinclude -fPIE
 
 # Directorios de trabajo
 SRC_DIR = src

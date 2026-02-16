@@ -1,13 +1,11 @@
-# 📅 Historial de Cambios (Changelog)
+# Changelog
 
-El objetivo de este archivo es llevar un registro cronológico de las versiones, nuevas funcionalidades y correcciones de errores del sistema operativo.
+## [1.1.0] - 2026-02-09
+### Agregado
+- Nuevo comando `limpiar` para limpiar la pantalla de la terminal (cls/clear).
 
-## [v1.0.0] - 2026-02-04
-### Añadido
-- **Shell Interactiva**: Bucle REPL funcional.
-- **Comandos Básicos**: `listar`, `leer`, `tiempo`, `calc`, `ayuda`, `salir`.
-- **Arquitectura Modular**: Separación en `core`, `commands`, `utils`.
-- **Sistema de Documentación**: Soporte para Doxygen.
-
-### Cambios
-- Migración de `main.c` monolítico a estructura modular.
+## [1.0.0] - 2026-02-01
+### Inicial
+- Versión inicial del sistema operativo educativo.
+- Shell básica con REPL.
+- Comandos: listar, leer, tiempo, calc, ayuda, salir.
