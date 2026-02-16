@@ -51,11 +51,19 @@ void cmd_crear_archivo(char **args);
  */
 void cmd_limpiar(char **args);
 
+/**
+ * @brief Elimina un archivo del sistema (con confirmación).
+ */
+void cmd_eliminar_archivo(char **args);
+
+
+
+
 // --- Utilidades del Registro de Comandos ---
 
 /**
  * @brief Retorna el número total de comandos registrados.
- * @return int Cantidad de comandos.
+ * @return int Cantidad de comandos.    
  */
 int num_comandos();
 

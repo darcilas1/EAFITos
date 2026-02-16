@@ -52,3 +52,46 @@ void cmd_crear_archivo(char **args) {
     fclose(fp);
     printf("Archivo '%s' creado correctamente.\n", nombre);
 }
+
+/**
+ * @brief comando ELIMINAR_ARCHIVO
+ * 
+ * Elimina un archivo del sistema 
+ * si el archivo no existe, muestra un mensaje de error.
+ * 
+ * @param args args [1] debe contener el nombre del arcivo a eliminar
+ */
+
+ void cmd_eliminar_archivo(char **args) {
+    if (args[1] == NULL) {
+        printf("Error: Debes indicar el nombre del archivo.\nUso: eliminar <nombre_archivo>\n");
+        return;
+    }
+
+    const char *nombre = args[1];
+
+    FILE *fp = fopen(nombre, "r");
+    if (fp == NULL) {
+        printf("Error: El archivo '%s' no existe.\n", nombre);
+        return;
+    }
+    fclose(fp);
+
+    printf("Estás seguro de eliminar '%s'? (s/n): ", nombre);
+    char respuesta[8] = {0};
+    if (fgets(respuesta, sizeof(respuesta), stdin) == NULL) {
+        printf("No se pudo leer la respuesta.\n");
+        return;
+    }
+
+    if (respuesta[0] != 's' && respuesta[0] != 'S') {
+        printf("Operación cancelada\n");
+        return;
+    }
+
+    if (remove(nombre) == 0) {
+        printf("Archivo '%s' eliminado \n", nombre);
+    } else {
+        perror("Error al eliminar el archivo");
+    }
+ }
