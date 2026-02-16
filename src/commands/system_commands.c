@@ -11,6 +11,21 @@
 #include "commands.h"
 
 /**
+ * @brief Comando LIMPIAR
+ * 
+ * Limpia la pantalla de la terminal utilizando secuencias de escape ANSI.
+ * Es equivalente al comando 'clear' en Unix o 'cls' en Windows.
+ * 
+ * @param args Argumentos del comando (ignorados).
+ */
+void cmd_limpiar(char **args) {
+    // \033[H: Mueve el cursor a la esquina superior izquierda (Home)
+    // \033[J: Borra la pantalla desde el cursor hasta el final
+    printf("\033[H\033[J");
+    (void)args;
+}
+
+/**
  * @brief Comando CALC (Calculadora)
  * 
  * Realiza operaciones aritméticas básicas entre dos números.
