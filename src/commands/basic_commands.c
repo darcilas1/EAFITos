@@ -23,6 +23,7 @@ void cmd_ayuda(char **args) {
     printf("  - leer <archivo>: Muestra el contenido de un archivo.\n");
     printf("  - tiempo: Muestra la fecha y hora actual.\n");
     printf("  - calc <n1> <op> <n2>: Realiza cálculos simples.\n");
+    printf("  - crear <archivo>: Crea un archivo nuevo.\n");
     printf("  - limpiar: Limpia la pantalla.\n");
     printf("  - ayuda: Muestra este mensaje.\n");
     printf("  - salir: Termina la sesión.\n");
