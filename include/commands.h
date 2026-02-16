@@ -41,6 +41,11 @@ void cmd_ayuda(char **args);
  */
 void cmd_salir(char **args);
 
+/**
+ * @brief Crea un archivo (con confirmacion si ya existe).
+ */
+void cmd_crear_archivo(char **args);
+
 // --- Utilidades del Registro de Comandos ---
 
 /**
