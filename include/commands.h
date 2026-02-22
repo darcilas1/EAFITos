@@ -56,6 +56,10 @@ void cmd_limpiar(char **args);
  */
 void cmd_eliminar_archivo(char **args);
 
+/**
+ * @brief busca texto Busca en archivos
+*/
+void cmd_buscar(char **args);
 
 
 
