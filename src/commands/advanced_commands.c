@@ -95,3 +95,54 @@ void cmd_crear_archivo(char **args) {
         perror("Error al eliminar el archivo");
     }
  }
+
+ /**
+ * @brief Comando BUSCAR
+ * 
+ * Busca una cadena de texto dentro de un archivo linea por linea.
+ * Si el texto es encontrado, muestra el numero de linea y el contenido.
+ * 
+ * @param args args[1] debe contener el texto a buscar
+ *             args[2] debe contener el nombre del archivo
+ */
+
+void cmd_buscar(char **args) {
+
+    if (args[1] == NULL || args[2] == NULL) {
+        printf("Error: Uso incorrecto del comando.\n");
+        printf("Uso: buscar <texto> <nombre_archivo>\n");
+        return;
+    }
+
+    const char *texto = args[1];
+    const char *nombre = args[2];
+
+    FILE *fp = fopen(nombre, "r");
+    if (fp == NULL) {
+        printf("Error: El archivo '%s' no existe o no se puede abrir.\n", nombre);
+        return;
+    }
+
+    char linea[1024];
+    int numeroLinea = 1;
+    int encontrados = 0;
+
+    while (fgets(linea, sizeof(linea), fp) != NULL) {
+
+        if (strstr(linea, texto) != NULL) {
+            printf("%d: %s", numeroLinea, linea);
+            encontrados++;
+        }
+
+        numeroLinea++;
+    }
+
+    if (encontrados == 0) {
+        printf("No se encontro el texto '%s' en el archivo '%s'.\n", texto, nombre);
+    } else {
+        printf("\nTotal de coincidencias encontradas: %d\n", encontrados);
+    }
+
+    fclose(fp);
+}
+

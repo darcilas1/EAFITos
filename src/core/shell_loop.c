@@ -30,7 +30,8 @@ char *nombres_comandos[] = {
     "salir",
     "crear",
     "limpiar",
-    "eliminar"
+    "eliminar",
+    "buscar"
 };
 
 /*
@@ -47,7 +48,8 @@ void (*func_comandos[]) (char **) = {
     &cmd_salir,
     &cmd_crear_archivo,
     &cmd_limpiar,
-    &cmd_eliminar_archivo
+    &cmd_eliminar_archivo,
+    &cmd_buscar
 };
 
 /**
