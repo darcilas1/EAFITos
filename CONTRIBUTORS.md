@@ -2,14 +2,15 @@
 
 Este archivo tiene como objetivo reconocer a todas las personas que han contribuido al desarrollo de **EAFITos**.
 
-## Mantenedores Principales
-* **Desarrollador Principal**: [Tu Nombre / Usuario] - Arquitectura del núcleo y shell básica.
-
 ## Colaboradores
-* *Aún no hay colaboradores externos.*
+* **Daniel Arcila** - Lider del proyecto y tester
+* **Juan Esteban Peña** - Desarrollador y documentador
+* **Jeronimo Contreras** - Desarrollador y documentador
+* **Edison Valencia** - Codigo base e inspiracion
 
 ## Cómo contribuir
 Si deseas aparecer en esta lista:
 1. Haz un fork del repositorio.
-2. Implementa una nueva funcionalidad (ej. gestión de procesos).
-3. Envía un Pull Request.
+2. Haz un branch con el nombre de tu funcionalidad.
+3. Implementa una nueva funcionalidad.
+4. Envía un Pull Request.
