@@ -107,8 +107,6 @@ EAFITos maneja correctamente las señales del sistema usando `sigaction()` (est�
 | `SIGINT` | Ctrl+C | Muestra un mensaje orientador y continúa la sesión. No termina el programa. |
 | `SIGTSTP` | Ctrl+Z | Informa que la suspensión no está disponible y continúa la sesión. |
 
-> **¿Por qué `sigaction()` y no `signal()`?** Porque `sigaction()` es más portable, su comportamiento está definido por POSIX y permite configurar flags adicionales como `SA_RESTART` para reiniciar automáticamente llamadas al sistema interrumpidas.
-
 ### 4. 🧪 Pruebas Automáticas — Unit Tests
 
 El proyecto incluye una **suite de unit tests** en `tests/unit_tests.c` con un framework minimalista sin dependencias externas.
