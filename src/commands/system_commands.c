@@ -7,8 +7,9 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h> // Para atof (ASCII to Float conversion)
+#include <stdlib.h>  /* Para atof (ASCII to Float conversion) */
 #include "commands.h"
+#include "colors.h"
 
 /**
  * @brief Comando LIMPIAR
@@ -19,9 +20,19 @@
  * @param args Argumentos del comando (ignorados).
  */
 void cmd_limpiar(char **args) {
-    // \033[H: Mueve el cursor a la esquina superior izquierda (Home)
-    // \033[J: Borra la pantalla desde el cursor hasta el final
-    printf("\033[H\033[J");
+    /*
+     * Secuencia de limpieza completa (equivalente al comando 'clear'):
+     *   \033[2J  → Borra la pantalla visible completa
+     *   \033[3J  → Borra el scrollback buffer (historial de la terminal)
+     *   \033[H   → Mueve el cursor a la esquina superior izquierda (Home)
+     *
+     * La diferencia con \033[H\033[J (versión anterior):
+     *   La versión anterior solo ocultaba el contenido moviéndolo fuera
+     *   de la vista, pero al deslizar hacia arriba seguía siendo visible.
+     *   Con \033[3J se elimina completamente del buffer de la terminal.
+     */
+    printf("\033[2J\033[3J\033[H");
+    fflush(stdout);
     (void)args;
 }
 
@@ -39,7 +50,9 @@ void cmd_limpiar(char **args) {
 void cmd_calc(char **args) {
     // 1. Validación de argumentos. Necesitamos exáctamente 3 partes después del comando.
     if (args[1] == NULL || args[2] == NULL || args[3] == NULL) {
-        printf("Uso: calc <num1> <operador> <num2>\nEjemplo: calc 5 + 3\n");
+        printf(COLOR_YELLOW "Uso: " COLOR_RESET
+               "calc <num1> <operador> <num2>\n"
+               COLOR_DIM "Ejemplo: calc 5 + 3\n" COLOR_RESET);
         return;
     }
 
@@ -62,20 +75,20 @@ void cmd_calc(char **args) {
         case 'x': // Permitimos 'x' como alias de multiplicación
             res = n1 * n2; 
             break;
-        case '/': 
-            // Manejo de caso borde: División por cero
+        case '/':
             if (n2 == 0) {
-                printf("Error: División por cero no permitida.\n");
+                printf(COLOR_RED "[ERROR]" COLOR_RESET
+                       " División por cero no permitida.\n");
                 return;
             }
-            res = n1 / n2; 
+            res = n1 / n2;
             break;
         default:
-            printf("Error: Operador '%c' no reconocido. Use +, -, * o /.\n", op);
+            printf(COLOR_RED "[ERROR]" COLOR_RESET
+                   " Operador '%c' no reconocido. Use +, -, * o /.\n", op);
             return;
     }
 
-    // 4. Salida
-    // %.2f formatea el float para mostrar solo 2 decimales.
-    printf("Resultado: %.2f\n", res);
+    /* Resultado en verde */
+    printf(COLOR_GREEN "  Resultado: " COLOR_BOLD "%.2f\n" COLOR_RESET, res);
 }

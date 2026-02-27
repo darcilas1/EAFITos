@@ -2,6 +2,14 @@
 
 El objetivo de este archivo es llevar un registro cronológico de las versiones, nuevas funcionalidades y correcciones de errores del sistema operativo.
 
+## [1.4.0] - 2026-02-21
+### Agregado
+- Nuevo comando `buscar` para buscar texto en archivos.
+
+## [1.3.0] - 2026-02-12
+### Agregado
+- Nuevo comando `eliminar` para eliminar archivos.
+
 ## [1.2.0] - 2026-02-11
 ### Agregado
 - Nuevo comando `crear` para crear un archivo nuevo.
