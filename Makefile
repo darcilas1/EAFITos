@@ -45,7 +45,7 @@ OBJS = $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 # ------------------------------------------------------------------------------
 # .PHONY indica que estos objetivos no son archivos reales.
 # 'all', 'clean' y 'run' son acciones, no archivos a crear.
-.PHONY: all clean run
+.PHONY: all clean run test
 
 # Regla por defecto (la primera que ve make). Construye el ejecutable.
 all: $(TARGET)
@@ -88,3 +88,27 @@ clean:
 run: all
 	@echo "🚀 Ejecutando EAFITos..."
 	./$(TARGET)
+
+# ------------------------------------------------------------------------------
+# Tests Automáticos
+# ------------------------------------------------------------------------------
+# Compila y ejecuta la suite de unit tests.
+# Solo compila los módulos que los tests necesitan (parser.c y utils/help.c).
+# El ejecutable de test se separa del binario principal.
+TEST_SRCS = tests/unit_tests.c \
+             $(SRC_DIR)/core/parser.c
+
+TEST_TARGET = $(BUILD_DIR)/unit_tests
+
+test: $(TEST_TARGET)
+	@echo "🧪 Ejecutando unit tests..."
+	./$(TEST_TARGET)
+
+$(TEST_TARGET): $(TEST_SRCS) | $(BUILD_DIR)
+	@echo "🔨 Compilando tests..."
+	@mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) -o $@ $(TEST_SRCS)
+
+# Crea el directorio build si no existe
+$(BUILD_DIR):
+	@mkdir -p $(BUILD_DIR)

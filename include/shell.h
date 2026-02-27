@@ -15,6 +15,17 @@
 // Caracteres que separan los argumentos de un comando (espacio, tab, etc.)
 #define DELIM " \t\r\n\a"
 
+// Longitud máxima del texto del prompt personalizable
+#define MAX_PROMPT_LEN 64
+
+/**
+ * @brief Texto del prompt personalizable (definido en shell_loop.c).
+ *
+ * Puede modificarse en tiempo de ejecución con el comando 'prompt'.
+ * Valor por defecto: "EAFITos".
+ */
+extern char prompt_personalizado[MAX_PROMPT_LEN];
+
 /**
  * @brief Inicia el bucle principal de la shell.
  * No retorna hasta que el comando 'salir' sea invocado.
